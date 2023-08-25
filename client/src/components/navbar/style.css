@@ -15,6 +15,7 @@ header {
 ul#active-menu {
   background-color: rgb(28, 28, 28);
   list-style-type: none;
+  display: none;
 }
 
 li {
@@ -33,6 +34,14 @@ li:hover {
 #menu-icon {
   color: white;
   scale: 1.5;
+  cursor: pointer;
+}
+
+#x-icon {
+  color: white;
+  scale: 1.5;
+  cursor: pointer;
+  display: none;
 }
 
 #uber-logo {

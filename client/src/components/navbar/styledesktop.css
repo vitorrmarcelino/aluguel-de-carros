@@ -43,6 +43,10 @@
     display: none;
   }
 
+  #x-icon{
+    display: none;
+  }
+
   ul#active-menu{
     display: none;
   }

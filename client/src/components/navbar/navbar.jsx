@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import "./styledesktop.css";
 import UberLogo from "../../assets/uber-logo.png";
 import { Menu } from "lucide-react";
+import {X} from 'lucide-react'
 
-const navbar = () => {
+const NavBar = () => {
+  useEffect(() => {
+    const MenuIcon = document.querySelector("#menu-icon");
+    const XIcon = document.querySelector('#x-icon')
+    const MenuDisplay = document.querySelector("#active-menu");
+
+    const OpenMenu = () => {
+      MenuDisplay.style.display = "block";
+      MenuIcon.style.display = 'none';
+      XIcon.style.display = 'block'
+    };
+
+    const CloseMenu = () => {
+      MenuDisplay.style.display = "none";
+      MenuIcon.style.display = 'block';
+      XIcon.style.display = 'none'
+    };
+
+    MenuIcon.addEventListener("click", OpenMenu);
+
+    XIcon.addEventListener("click", CloseMenu);
+
+  }, []);
   return (
     <div>
       <div id="div-header">
@@ -29,6 +52,7 @@ const navbar = () => {
             </Link>
           </nav>
           <Menu id="menu-icon" />
+          <X id="x-icon"/>
         </header>
       </div>
       <ul id="active-menu">
@@ -49,4 +73,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default NavBar;
