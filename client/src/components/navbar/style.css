@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+nav {
+  display: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 20px 30px;
+}
+
+ul#active-menu {
+  background-color: rgb(28, 28, 28);
+  list-style-type: none;
+}
+
+li {
+  padding: 10px;
+}
+
+li:hover {
+  background-color: rgb(75, 75, 75);
+}
+
+.header-links {
+  text-decoration: none;
+  color: white;
+}
+
+#menu-icon {
+  color: white;
+  scale: 1.5;
+}
+
+#uber-logo {
+  height: 20px;
+}
