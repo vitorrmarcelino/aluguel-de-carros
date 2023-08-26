@@ -41,9 +41,12 @@ li:hover {
   color: white;
   scale: 1.5;
   cursor: pointer;
-  display: none;
 }
 
 #uber-logo {
   height: 20px;
+}
+
+.hide{
+  display: none;
 }
