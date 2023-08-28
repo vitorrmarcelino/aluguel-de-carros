@@ -16,14 +16,14 @@ const NavBar = () => {
 
     const OpenMenu = () => {
       MenuDisplay.style.display = "block";
-    MenuIcon.classList.toggle("hide");
-    XIcon.classList.toggle("hide");
+      MenuIcon.style.display = "none";
+      XIcon.style.display = "block";
     };
 
     const CloseMenu = () => {
       MenuDisplay.style.display = "none";
-    MenuIcon.classList.toggle("hide");
-    XIcon.classList.toggle("hide");
+      MenuIcon.style.display = "block";
+      XIcon.style.display = "none";
     };
 
     const Change = () => {
