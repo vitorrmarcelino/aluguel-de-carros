@@ -6,8 +6,9 @@ import App from "./App";
 
 //Config Router
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home"
-import ErrorPage from "./pages/ErrorPage"
+import Home from "./pages/Home/Home"
+import ErrorPage from "./pages/Error/ErrorPage"
+import CarRent from './pages/CarRent/CarRent'
 
 const router = createBrowserRouter([
   {
@@ -19,10 +20,10 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />
       },
-      // {
-      //   path: '/whatever',
-      //   element: <Whatever/>
-      // }
+      {
+        path: '/alugar',
+        element: <CarRent/>
+      }
     ]
   }
 ])
