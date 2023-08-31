@@ -23,7 +23,7 @@ app.post("/carros", async (req, res) => {
     try {
       const car = await CarModel.create(req.body);
   
-      res.status(201).json(user);
+      res.status(201).json(car);
     } catch (error) {
       res.status(500).send(error.message);
     }
