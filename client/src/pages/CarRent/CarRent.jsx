@@ -6,7 +6,9 @@ import api from "../../api/Api";
 const CarRent = () => {
 
   useEffect(() => {
-
+    api.get('carros').then(res =>{
+      console.log(res.data)
+    })
   }, [])
   
 
