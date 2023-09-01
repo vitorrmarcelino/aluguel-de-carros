@@ -4,7 +4,7 @@ import "./style.css";
 import api from "../../api/Api";
 
 const EachCar = () => {
-    
+
   api.get("carros").then((res) => {
     console.log(res.data);
   });
