@@ -3,7 +3,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-import "./styledesktop.css";
 import UberLogo from "../../assets/uber-logo.png";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";

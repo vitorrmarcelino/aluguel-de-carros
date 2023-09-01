@@ -19,6 +19,18 @@ app.get("/carros", async (req, res) => {
   }
 });
 
+app.get('/carros/:id', async (req,res)=>{
+  try{
+    const id = req.params.id;
+
+    const car = await CarModel.findById(id);
+
+    return res.status(200).json(car)
+  }catch(err){
+    return res.status(500).send(err.message)
+  }
+})
+
 app.post("/carros", async (req, res) => {
     try {
       const car = await CarModel.create(req.body);

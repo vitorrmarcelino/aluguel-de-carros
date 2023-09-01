@@ -1,21 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.css";
-import axios from "axios";
-import api from "../../api/Api";
+import EachCar from "../../components/eachcar/EachCar";
 
 const CarRent = () => {
-
-  useEffect(() => {
-    api.get('carros').then(res =>{
-      console.log(res.data)
-    })
-  }, [])
-  
-
-
   return (
     <div className="container">
-      <h1>Carros Disponiveis</h1>
+      <EachCar />
     </div>
   );
 };

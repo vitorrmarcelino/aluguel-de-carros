@@ -29,12 +29,16 @@ const carSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  pricePerDay: {
+    type: Number,
+    required: true,
+  },
   ImgLink: {
     type: String,
     required: true,
   },
 });
 
-const CarModel = mongoose.model('Car', carSchema);
+const CarModel = mongoose.model("Car", carSchema);
 
 module.exports = CarModel;
