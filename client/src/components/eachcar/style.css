@@ -1,5 +1,53 @@
 @charset "UTF-8";
 
-.carImg{
-    height: 200px;
+.each-car {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.carImg {
+  max-width: 100%;
+  height: auto;
+}
+
+.infos {
+  margin-top: auto;
+  margin-top: auto;
+}
+
+.each-car-title {
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.infos-text {
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: rgb(99, 99, 99);
+}
+
+.rent-button {
+  display: inline-block;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px 0px;
+  text-align: center;
+  background-color: #000000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.rent-button:hover {
+  background-color: #333333;
 }

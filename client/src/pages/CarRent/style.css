@@ -1,0 +1,13 @@
+.cars {
+    display: grid;
+    gap: 30px;
+    margin: 10px 30px;
+    grid-template-columns: repeat(2, 1fr); /* Define inicialmente 2 colunas */
+}
+
+@media screen and (max-width: 768px) {
+    .cars {
+        grid-template-columns: repeat(1, 1fr); /* Uma coluna em telas menores */
+        max-width: 500px;
+    }
+}

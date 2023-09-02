@@ -13,10 +13,12 @@ const CarRent = () => {
   }, []);
 
   return (
-    <div className="container">
-      {cars.map((car) => (
-        <EachCar key={car.id} data={car} />
-      ))}
+    <div className="center">
+      <div className="cars container">
+        {cars.map((car) => (
+          <EachCar key={car.id} data={car} />
+        ))}
+      </div>
     </div>
   );
 };

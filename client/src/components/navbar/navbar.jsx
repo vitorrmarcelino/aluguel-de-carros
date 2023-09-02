@@ -49,7 +49,7 @@ const NavBar = () => {
             <img src={UberLogo} alt="logonav" id="uber-logo" />
           </Link>
           <nav>
-            <Link to="/" className="header-links">
+            <Link to="/alugar" className="header-links">
               Alugue um carro
             </Link>
             <Link to="/" className="header-links">

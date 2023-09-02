@@ -13,6 +13,10 @@ const carSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  isTurbo: {
+    type: Boolean,
+    required: true,
+  },
   isSedan: {
     type: Boolean,
     required: true,
