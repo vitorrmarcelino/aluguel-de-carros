@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import propTypes from "prop-types";
-import "./style.css";
+import "./EachCar.css";
 import formatDisplacement from "../../utils/formatDisplacement";
 
 const EachCar = ({ data }) => {
