@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
 
-const connectToDatabase = async () => {
-  await mongoose
+const connectToDatabase = () => {
+  mongoose
     .connect(
       `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.zxwa4et.mongodb.net/database?retryWrites=true&w=majority`
     )
