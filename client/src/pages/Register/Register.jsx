@@ -26,6 +26,10 @@ const Register = () => {
 
         console.log(response.data);
         setError('')
+        setName('')
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
       }catch(error){
         if(!error?.response){
           setError("Erro ao acessar o servidor");
