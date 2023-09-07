@@ -1,42 +1,45 @@
 import React, { useState } from "react";
 import "./Register.css";
 import api from "../../api/Api";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleSubmitRegisterUser = async (e) => {
     e.preventDefault();
 
-    console.log(name, email, password, confirmpassword);
-
-    try{
-
+    try {
       const response = await api.post(
         "/auth/register",
         JSON.stringify({ name, email, password, confirmpassword }),
         {
           headers: { "Content-Type": "application/json" },
         }
-        );
+      );
 
-        console.log(response.data);
-        setError('')
-        setName('')
-        setEmail('')
-        setPassword('')
-        setConfirmPassword('')
-      }catch(error){
-        if(!error?.response){
-          setError("Erro ao acessar o servidor");
-        }else if(error.response.status === 422){
-          setError(error.response.data.msg)
-        }
+      console.log(response.data);
+
+      setError("");
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+
+      navigate("/login");
+    } catch (error) {
+      if (!error?.response) {
+        setError("Erro ao acessar o servidor");
+      } else if (error.response.status === 422) {
+        setError(error.response.data.msg);
       }
+    }
   };
 
   return (
@@ -48,7 +51,7 @@ const Register = () => {
             type="text"
             id="iname"
             name="name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => [setName(e.target.value), setError("")]}
             value={name}
           />
         </div>
@@ -58,7 +61,7 @@ const Register = () => {
             type="email"
             id="iemail"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => [setEmail(e.target.value), setError("")]}
             value={email}
           />
         </div>
@@ -68,7 +71,7 @@ const Register = () => {
             type="password"
             id="ipassword"
             name="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => [setPassword(e.target.value), setError("")]}
             value={password}
           />
         </div>
@@ -78,7 +81,7 @@ const Register = () => {
             type="password"
             id="iconfirmpassword"
             name="confirmpassword"
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            onChange={(e) => [setConfirmPassword(e.target.value),setError("")]}
             value={confirmpassword}
           />
         </div>

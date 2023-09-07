@@ -68,16 +68,16 @@ const NavBar = () => {
         </header>
       </div>
       <ul id="active-menu">
-        <Link to="/" className="header-links">
+        <Link to="/alugar" className="header-links">
           <li>Alugue um carro</li>
         </Link>
         <Link to="/" className="header-links">
           <li>Minhas Reservas</li>
         </Link>
-        <Link to="/" className="user-actions header-links">
+        <Link to="/login" className="user-actions header-links">
           <li>Entrar</li>
         </Link>
-        <Link to="/" className="user-actions header-links">
+        <Link to="/cadastro" className="user-actions header-links">
           <li>Inscrever-se</li>
         </Link>
       </ul>
