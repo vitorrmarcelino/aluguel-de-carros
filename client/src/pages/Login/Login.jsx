@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import api from "../../api/Api";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container form-container">
       <form onSubmit={handleLoginUser}>
         <div>
           <label htmlFor="iemail">E-mail:</label>
@@ -44,7 +45,7 @@ const Login = () => {
             type="email"
             id="iemail"
             name="email"
-            onChange={(e) => [setEmail(e.target.value),setError("")]}
+            onChange={(e) => [setEmail(e.target.value), setError("")]}
             value={email}
           />
         </div>
@@ -54,13 +55,16 @@ const Login = () => {
             type="password"
             id="ipassword"
             name="password"
-            onChange={(e) => [setPassword(e.target.value),setError("")]}
+            onChange={(e) => [setPassword(e.target.value), setError("")]}
             value={password}
           />
         </div>
         <button type="submit">Entrar</button>
       </form>
-      <p>{error}</p>
+      <p className="error-p">{error}</p>
+      <p>
+        Não tem uma conta? <Link to={"/cadastro"}>Cadastrar</Link>
+      </p>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import api from "../../api/Api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -43,8 +43,8 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmitRegisterUser}>
+    <div className="container form-container">
+      <form onSubmit={handleSubmitRegisterUser} className="user-form">
         <div>
           <label htmlFor="iname">Nome:</label>
           <input
@@ -87,7 +87,8 @@ const Register = () => {
         </div>
         <button type="submit">Cadastrar</button>
       </form>
-      <p>{error}</p>
+      <p className="error-p">{error}</p>
+      <p>Já tem uma conta? <Link to={'/login'}>Entrar</Link></p>
     </div>
   );
 };

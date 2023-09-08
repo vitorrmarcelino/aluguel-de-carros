@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+.form-container{
+    max-width: 300px; /* Reduced container width */
+    padding: 25px; /* Reduced padding */
+    border: 1px solid #000; /* Black border */
+    border-radius: 5px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Slightly reduced box shadow */
+    margin: 50px auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000; /* Black text color */
+  }
+  
+  input {
+    padding: 5px; /* Reduced input padding */
+    margin-bottom: 10px; /* Reduced margin */
+    border: 1px solid #000; /* Black border */
+    border-radius: 3px; /* Slightly reduced border radius */
+    font-size: 14px; /* Smaller font size */
+    width: 100%;
+  }
+  
+  button {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 3px; /* Slightly reduced border radius */
+    padding: 8px 15px; /* Smaller padding */
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+  }
+  
+  button:hover {
+    background-color: #333; /* Slightly darker black on hover */
+  }
+  
+  p {
+    margin-top: 10px; /* Reduced margin top */
+    text-align: center;
+    color: #000; /* Black text color */
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .error-p{
+    font-weight: bold;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000; /* Black text color */
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

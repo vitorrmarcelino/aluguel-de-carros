@@ -5,22 +5,22 @@ exports.post = async (req, res) => {
   const { name, email, password, confirmpassword } = req.body;
   //validações
   if (!name) {
-    return res.status(422).json({ msg: "nome é obrigatorio" });
+    return res.status(422).json({ msg: "Nome é obrigatorio" });
   }
   if (!email) {
-    return res.status(422).json({ msg: "email é obrigatorio" });
+    return res.status(422).json({ msg: "Email é obrigatorio" });
   }
   if (!password) {
-    return res.status(422).json({ msg: "senha é obrigatorio" });
+    return res.status(422).json({ msg: "Senha é obrigatorio" });
   }
   if (password !== confirmpassword) {
-    return res.status(422).json({ msg: "As senhas não conferem" });
+    return res.status(422).json({ msg: "As senhas estão diferentes!" });
   }
   //Verificar se usuario existe
   const userExists = await UserModel.findOne({ email: email });
 
   if (userExists) {
-    return res.status(422).json({ msg: "Esse email ja foi utilizado!" });
+    return res.status(422).json({ msg: "Esse email já foi utilizado!" });
   }
   //criação de senha
   const salt = await bcrypt.genSalt(12);
@@ -34,9 +34,9 @@ exports.post = async (req, res) => {
   try {
     await user.save();
 
-    res.status(201).json({ msg: "usuario criado" });
+    res.status(201).json({ msg: "Usuário criado com sucesso!" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ msg: "Aconteceu um erro" });
+    res.status(500).json({ msg: "Aconteceu um erro!" });
   }
 };
