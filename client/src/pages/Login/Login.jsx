@@ -59,10 +59,10 @@ const Login = () => {
             value={password}
           />
         </div>
-        <button type="submit">Entrar</button>
+        <button type="submit" className="form-button">Entrar</button>
       </form>
-      <p className="error-p">{error}</p>
-      <p>
+      <p className="error-p form-p">{error}</p>
+      <p className="form-p">
         Não tem uma conta? <Link to={"/cadastro"}>Cadastrar</Link>
       </p>
     </div>

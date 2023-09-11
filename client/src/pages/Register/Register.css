@@ -30,7 +30,7 @@
     width: 100%;
   }
   
-  button {
+  .form-button {
     background-color: #000; /* Black background */
     color: #fff; /* White text color */
     border: none;
@@ -40,11 +40,11 @@
     font-size: 14px; /* Smaller font size */
   }
   
-  button:hover {
+  .form-button:hover {
     background-color: #333; /* Slightly darker black on hover */
   }
   
-  p {
+  .form-p {
     margin-top: 10px; /* Reduced margin top */
     text-align: center;
     color: #000; /* Black text color */
@@ -53,15 +53,5 @@
 
   .error-p{
     font-weight: bold;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #000; /* Black text color */
-    font-weight: bold;
-  }
-  
-  a:hover {
-    text-decoration: underline;
   }
   

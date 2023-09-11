@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./CarRent.css";
+import "./Cars.css";
 import EachCar from "../../components/eachcar/EachCar";
 import api from "../../api/Api";
 
-const CarRent = () => {
+const Cars = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
@@ -23,4 +23,4 @@ const CarRent = () => {
   );
 };
 
-export default CarRent;
+export default Cars;

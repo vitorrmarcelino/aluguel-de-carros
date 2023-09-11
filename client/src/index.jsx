@@ -7,7 +7,8 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import ErrorPage from "./pages/Error/ErrorPage";
-import CarRent from "./pages/CarRent/CarRent";
+import Cars from "./pages/Cars/Cars";
+import Car from "./pages/Car/Car"
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/alugar",
-        element: <CarRent />,
+        element: <Cars />,
+      },
+      {
+        path: "/alugar/:id",
+        element: <Car />,
       },
       {
         path: "/cadastro",

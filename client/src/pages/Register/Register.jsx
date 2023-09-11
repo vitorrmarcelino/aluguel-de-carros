@@ -44,7 +44,7 @@ const Register = () => {
 
   return (
     <div className="container form-container">
-      <form onSubmit={handleSubmitRegisterUser} className="user-form">
+      <form onSubmit={handleSubmitRegisterUser}>
         <div>
           <label htmlFor="iname">Nome:</label>
           <input
@@ -81,14 +81,16 @@ const Register = () => {
             type="password"
             id="iconfirmpassword"
             name="confirmpassword"
-            onChange={(e) => [setConfirmPassword(e.target.value),setError("")]}
+            onChange={(e) => [setConfirmPassword(e.target.value), setError("")]}
             value={confirmpassword}
           />
         </div>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" className="form-button">Cadastrar</button>
       </form>
-      <p className="error-p">{error}</p>
-      <p>Já tem uma conta? <Link to={'/login'}>Entrar</Link></p>
+      <p className="error-p form-p">{error}</p>
+      <p className="form-p">
+        Já tem uma conta? <Link to={"/login"}>Entrar</Link>
+      </p>
     </div>
   );
 };
