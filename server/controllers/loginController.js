@@ -36,7 +36,7 @@ exports.post = async (req, res) => {
     );
 
     res.status(200).json({ msg: "Login Realizado com sucesso!", token });
-  } catch {
+  } catch(error) {
     console.log(error);
     res.status(500).json({ msg: "Aconteceu um erro" });
   }
