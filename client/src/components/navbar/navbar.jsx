@@ -1,11 +1,11 @@
-// //CÓDIGO FEITO 100% POR MIM
-
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import UberLogo from "../../assets/uber-logo.png";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";
+
+const isAuthenticated = true;
 
 const NavBar = () => {
   useEffect(() => {
@@ -56,12 +56,23 @@ const NavBar = () => {
               Minhas Reservas
             </Link>
             <span style={{ color: "white" }}>|</span>
-            <Link to="/login" className="user-actions header-links">
-              Entrar
-            </Link>
-            <Link to="/cadastro" className="user-actions header-links">
-              Inscrever-se
-            </Link>
+
+            {!isAuthenticated ? (
+              <>
+                <Link to="/login" className="user-actions header-links">
+                  Entrar
+                </Link>
+                <Link to="/cadastro" className="user-actions header-links">
+                  Inscrever-se
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link to="/conta" className="user-actions header-links">
+                  Conta
+                </Link>
+              </>
+            )}
           </nav>
           <Menu id="menu-icon" />
           <X id="x-icon" />
