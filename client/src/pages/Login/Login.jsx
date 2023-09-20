@@ -18,12 +18,15 @@ const Login = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
+      
       console.log(response.data);
-
+      
       setError("");
       setEmail("");
       setPassword("");
+      
+      const data = response.data;
+      return data;
     } catch (error) {
       if (!error?.response) {
         setError("Erro ao acessar o servidor");
@@ -59,7 +62,9 @@ const Login = () => {
             value={password}
           />
         </div>
-        <button type="submit" className="form-button">Entrar</button>
+        <button type="submit" className="form-button">
+          Entrar
+        </button>
       </form>
       <p className="error-p form-p">{error}</p>
       <p className="form-p">
