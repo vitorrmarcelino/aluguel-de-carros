@@ -17,6 +17,5 @@ exports.checkToken = (req, res, next) => {
       next();
     } catch (error) {
       res.status(400).json({ msg: "token invalido!" });
-      console.log(error);
     }
   }
