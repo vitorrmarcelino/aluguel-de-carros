@@ -1,6 +1,6 @@
 import api from "./Api"
 
-export const postLoginController = async (email, password) =>{
+export const postLoginUser = async (email, password) =>{
     try {
         const response = await api.post(
           "/auth/login",

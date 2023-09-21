@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
-import { postLoginController } from "../api/postLoginController";
+import { postLoginUser } from "../api/postLoginUser";
 import { useNavigate } from "react-router-dom";
 import Api from "../api/Api";
-import { checkToken } from "../api/checkTokenController";
+import { checkToken } from "../api/checkToken";
 
 export const AuthContext = createContext();
 
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await postLoginController(email, password);
+      const response = await postLoginUser(email, password);
       const SecurityToken = response.data.token;
 
       Api.defaults.headers.Authorization = `Bearer ${SecurityToken}`;
