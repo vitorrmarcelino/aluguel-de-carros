@@ -1,11 +1,9 @@
-import NavBar from "./components/navbar/Navbar";
-import { Outlet } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
 
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      <Outlet />
+      <AppRoutes/>
     </div>
   );
 }

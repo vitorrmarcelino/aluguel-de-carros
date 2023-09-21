@@ -1,9 +1,9 @@
 const express = require("express");
 const route = express.Router();
 const jwt = require("jsonwebtoken");
-const UserModel = require("../models/user.model")
+const UserModel = require("../models/user.model");
 require("dotenv").config();
-''
+("");
 //controllers
 const carController = require("../controllers/carController");
 const userPostController = require("../controllers/userPostController");
@@ -27,7 +27,7 @@ route.post("/auth/register", userPostController.post);
 route.post("/auth/login", loginController.post);
 
 //Rota Privada
-route.get("/user/:id", chechToken, async (req, res) => {
+route.get("/user/:id", checkToken, async (req, res) => {
   const id = req.params.id;
 
   //checar se o usuario existe
@@ -40,7 +40,19 @@ route.get("/user/:id", chechToken, async (req, res) => {
   res.status(200).json({ user });
 });
 
-function chechToken(req, res, next) {
+route.get("/users", checkToken, async (req, res) => {
+  const users = await UserModel.find({});
+  if (!users) {
+    return res.status(404).json({ msg: "usuarios não encontrado" });
+  }
+  res.status(200).json(users);
+});
+
+route.get("/checktoken", checkToken, async (req, res) => {
+  res.status(200).json({ msg: "verificado!" });
+});
+
+function checkToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
 

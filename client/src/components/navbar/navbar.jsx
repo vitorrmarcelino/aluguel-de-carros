@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import UberLogo from "../../assets/uber-logo.png";
 import { Menu } from "lucide-react";
 import { X } from "lucide-react";
-
-const isAuthenticated = true;
+import { AuthContext } from "../../context/auth";
 
 const NavBar = () => {
+  const { authenticated } = useContext(AuthContext);
+
   useEffect(() => {
     const MenuIcon = document.querySelector("#menu-icon");
     const XIcon = document.querySelector("#x-icon");
@@ -57,7 +58,7 @@ const NavBar = () => {
             </Link>
             <span style={{ color: "white" }}>|</span>
 
-            {!isAuthenticated ? (
+            {!authenticated ? (
               <>
                 <Link to="/login" className="user-actions header-links">
                   Entrar
@@ -69,7 +70,7 @@ const NavBar = () => {
             ) : (
               <>
                 <Link to="/conta" className="user-actions header-links">
-                  Conta
+                  Logado
                 </Link>
               </>
             )}

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/auth";
 import "./Login.css";
-import api from "../../api/Api";
+// import api from "../../api/Api";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,22 +14,13 @@ const Login = () => {
   const handleLoginUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post(
-        "/auth/login",
-        JSON.stringify({ email, password }),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      
-      console.log(response.data);
-      
+      const response = await login(email, password);
+
       setError("");
       setEmail("");
       setPassword("");
-      
-      const data = response.data;
-      return data;
+
+      console.log(response.data);
     } catch (error) {
       if (!error?.response) {
         setError("Erro ao acessar o servidor");
@@ -35,6 +29,8 @@ const Login = () => {
         error.response.status === 422
       ) {
         setError(error.response.data.msg);
+      } else {
+        setError("Erro ao efetuar o Login!");
       }
     }
   };
@@ -67,6 +63,7 @@ const Login = () => {
         </button>
       </form>
       <p className="error-p form-p">{error}</p>
+      {/* <p className="form-p">{String(authenticated)}</p> */}
       <p className="form-p">
         Não tem uma conta? <Link to={"/cadastro"}>Cadastrar</Link>
       </p>

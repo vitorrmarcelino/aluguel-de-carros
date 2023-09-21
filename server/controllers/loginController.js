@@ -3,7 +3,7 @@ const UserModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-exports.post = async (req, res) => {
+exports.post =  async (req, res) => {
   const { email, password } = req.body;
   //validação
   if (!email) {
@@ -35,7 +35,7 @@ exports.post = async (req, res) => {
       secret
     );
 
-    res.status(200).json({ msg: "Login Realizado com sucesso!", token ,user });
+    res.status(200).json({ msg: "Login Realizado com sucesso!", token , user });
   } catch(error) {
     console.log(error);
     res.status(500).json({ msg: "Aconteceu um erro" });
