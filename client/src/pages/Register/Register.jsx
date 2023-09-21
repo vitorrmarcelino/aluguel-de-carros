@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.css";
-import api from "../../api/Api";
+import { postRegisterUser } from "../../api/postRegisterUser";
 import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
@@ -16,12 +16,11 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post(
-        "/auth/register",
-        JSON.stringify({ name, email, password, confirmpassword }),
-        {
-          headers: { "Content-Type": "application/json" },
-        }
+      const response = await postRegisterUser(
+        name,
+        email,
+        password,
+        confirmpassword
       );
 
       console.log(response.data);
@@ -85,7 +84,9 @@ const Register = () => {
             value={confirmpassword}
           />
         </div>
-        <button type="submit" className="form-button">Cadastrar</button>
+        <button type="submit" className="form-button">
+          Cadastrar
+        </button>
       </form>
       <p className="error-p form-p">{error}</p>
       <p className="form-p">
