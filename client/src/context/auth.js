@@ -12,36 +12,46 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const checkTokenValidity = async () => {
     const recoveredUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
 
     if (token && recoveredUser) {
-      (async () => {
+      try {
         Api.defaults.headers.Authorization = `Bearer ${token}`;
-        setUser(JSON.parse(recoveredUser));
-        setToken(token);
-      })();
+        const tokenResponse = await checkToken();
+
+        if (tokenResponse.status === 200) {
+          setUser(JSON.parse(recoveredUser));
+          setToken(token);
+        } else {
+          logout();
+        }
+      } catch (error) {
+        logout();
+      }
     }
 
     setLoading(false);
-  }, []);
+  };
+
+  useEffect(() => {
+    checkTokenValidity();
+  });
 
   const login = async (email, password) => {
     try {
       const response = await postLoginController(email, password);
       const SecurityToken = response.data.token;
-      const user = response.data.user;
-      const token = response.data.token;
 
       Api.defaults.headers.Authorization = `Bearer ${SecurityToken}`;
       const tokenResponse = await checkToken();
 
       if (tokenResponse.status === 200) {
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", token);
-        setUser(user);
-        setToken(token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", SecurityToken);
+        setUser(response.data.user);
+        setToken(SecurityToken);
       }
 
       navigate("/conta");
