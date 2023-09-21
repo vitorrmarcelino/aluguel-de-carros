@@ -48,12 +48,15 @@ li:hover {
   height: 20px;
 }
 
-.hide{
+.hide {
+  display: none;
+}
+
+.user-picture {
   display: none;
 }
 
 @media only screen and (min-width: 768px) {
-    
   #div-header {
     display: flex;
     justify-content: center;
@@ -84,6 +87,7 @@ li:hover {
 
   header > nav {
     display: flex;
+    align-items: center;
     gap: 40px;
   }
 
@@ -91,15 +95,23 @@ li:hover {
     color: rgb(133, 133, 133);
   }
 
-  #menu-icon{
+  #menu-icon {
     display: none;
   }
 
-  #x-icon{
+  #x-icon {
     display: none;
   }
 
-  ul#active-menu{
+  ul#active-menu {
     display: none;
+  }
+
+  .user-picture {
+    display: block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid white;
   }
 }

@@ -6,6 +6,8 @@ import { Menu } from "lucide-react";
 import { X } from "lucide-react";
 import { AuthContext } from "../../context/auth";
 
+import userPicture from "../../assets/cachiorro.webp"
+
 const NavBar = () => {
   const { authenticated } = useContext(AuthContext);
 
@@ -70,7 +72,7 @@ const NavBar = () => {
             ) : (
               <>
                 <Link to="/conta" className="user-actions header-links">
-                  Logado
+                  <img src={userPicture} alt="User" className="user-picture"/>
                 </Link>
               </>
             )}
