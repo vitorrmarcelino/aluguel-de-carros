@@ -10,9 +10,10 @@ const { checkToken } = require("../middleware/checkToken");
 const carController = require("../controllers/carControllers");
 const userPostController = require("../controllers/userPostController");
 const loginController = require("../controllers/loginController");
-const getUsersController = require("../controllers/getUsersController")
-const getUserByIdController = require("../controllers/getUserByIdController")
-const checkTokenController = require("../controllers/checkTokenController")
+const getUsersController = require("../controllers/getUsersController");
+const getUserByIdController = require("../controllers/getUserByIdController");
+const rentalsController = require("../controllers/rentalsController");
+const checkTokenController = require("../controllers/checkTokenController");
 
 //Rota Padrão
 route.get("/", (req, res) => {
@@ -25,9 +26,12 @@ route.post("/carros", carController.post);
 //Usuarios
 route.post("/auth/register", userPostController.post); //Registrar Usuario
 route.post("/auth/login", loginController.post); //Login
+//Transações
+route.post("/rentals", rentalsController.post);
+route.get("/rentals", rentalsController.get)
 //Rotas Privadas
 route.get("/checktoken", checkToken, checkTokenController.get); //Checking token
-route.get("/users", checkToken, getUsersController.get)
+route.get("/users", checkToken, getUsersController.get);
 route.get("/user/:id", checkToken, getUserByIdController.get);
 
 module.exports = route;
