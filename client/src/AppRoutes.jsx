@@ -37,7 +37,7 @@ const AppRoutes = () => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/alugar" element={<Cars />} />
-          <Route exact path="/aluga/:id" element={<Car />} />
+          <Route exact path="/alugar/:id" element={<Car />} />
           <Route exact path="/cadastro" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
           <Route
