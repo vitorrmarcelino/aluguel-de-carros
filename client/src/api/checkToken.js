@@ -1,5 +1,5 @@
-import Api from "./Api";
+import api from "./Api";
 
 export const checkToken = async () => {
-  return Api.get("/checktoken");
+  return api.get("/checktoken");
 };
