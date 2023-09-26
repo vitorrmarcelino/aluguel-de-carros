@@ -16,7 +16,7 @@ const Cars = () => {
     <div className="center">
       <div className="cars container">
         {cars.map((car) => (
-          <EachCar key={car.id} data={car} />
+          <EachCar key={car._id} data={car} />
         ))}
       </div>
     </div>
