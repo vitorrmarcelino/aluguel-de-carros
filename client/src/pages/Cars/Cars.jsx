@@ -13,7 +13,7 @@ const Cars = () => {
   }, []);
 
   return (
-    <div className="center">
+    <div className="center-flex">
       <div className="cars container">
         {cars.map((car) => (
           <EachCar key={car._id} data={car} />

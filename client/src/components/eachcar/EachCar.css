@@ -34,7 +34,7 @@
   color: rgb(99, 99, 99);
 }
 
-.rent-button {
+.redirect-button {
   display: inline-block;
   width: 100%;
   margin-top: 15px;
@@ -48,6 +48,6 @@
   font-weight: bold;
 }
 
-.rent-button:hover {
+.redirect-button:hover {
   background-color: #333333;
 }

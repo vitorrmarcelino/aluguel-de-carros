@@ -6,6 +6,6 @@ export const getCarById = async (url) => {
 
         return response
     } catch (error) {
-        throw new Error(error)
+        return
     }
 }

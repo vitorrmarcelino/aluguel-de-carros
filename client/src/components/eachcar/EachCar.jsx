@@ -58,7 +58,7 @@ const EachCar = ({ data }) => {
         </p>
         <p className="gear infos-text">{gear}</p>
         <p className="category infos-text">{carType}</p>
-        <Link to={`/alugar/${_id}`} className="rent-button">
+        <Link to={`/alugar/${_id}`} className="redirect-button">
           Alugar
         </Link>
       </div>

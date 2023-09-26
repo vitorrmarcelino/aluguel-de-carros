@@ -14,6 +14,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import NavBar from "./components/navbar/Navbar";
 import Account from "./pages/Account/Account";
+import NotFound from "./pages/Error/NotFound";
 
 const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -49,6 +50,7 @@ const AppRoutes = () => {
               </Private>
             }
           />
+          <Route exact path="/nao-encontrada" element={<NotFound />} />
         </Routes>
       </AuthProvider>
     </Router>
