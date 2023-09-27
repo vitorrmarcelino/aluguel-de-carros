@@ -9,80 +9,60 @@ import { AuthContext } from "../../context/auth";
 const Car = () => {
   const { user, authenticated } = useContext(AuthContext);
   const { id } = useParams();
+  const navigate = useNavigate();
   const [car, setCar] = useState(null);
   const [firstDay, setFirstDay] = useState("");
   const [lastDay, setLastDay] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [totalCost, setTotalCost] = useState(null);
 
-  const getCar = async (id) => {
-    try {
-      const response = await getCarById(`carros/${id}`);
-      const data = response.data;
-      setCar(data);
-    } catch (error) {
-      navigate("/nao-encontrada");
+  useEffect(() => {
+    const getCar = async () => {
+      try {
+        const response = await getCarById(`carros/${id}`);
+        const data = response.data;
+        setCar(data);
+      } catch (error) {
+        navigate("/nao-encontrada");
+      }
+    };
+
+    getCar();
+  }, [id, navigate]);
+
+  const handleDateChange = (e) => {
+    setError("");
+    const { name, value } = e.target;
+    if (name === "first-day") {
+      setFirstDay(value);
+    } else if (name === "last-day") {
+      setLastDay(value);
     }
   };
 
   useEffect(() => {
-    getCar(id);
-  }, []);
-
-  if (!car) {
-    return null;
-  }
-
-  const {
-    ImgLink,
-    carName,
-    carBrand,
-    engineDisplacementInMl,
-    Automatic,
-    isHatch,
-    isSedan,
-    isSUV,
-    isTurbo,
-    pricePerDay,
-  } = car;
-
-  let gear;
-
-  if (Automatic === true) {
-    gear = "Câmbio Automático";
-  } else {
-    gear = "Câmbio Manual";
-  }
-
-  let carType;
-
-  if (isHatch === true) {
-    carType = "Hatch";
-  } else if (isSedan === true) {
-    carType = "Sedan";
-  } else if (isSUV === true) {
-    carType = "SUV";
-  }
-
-  let engineType;
-
-  if (!isTurbo) {
-    engineType = "Aspirado";
-  } else {
-    engineType = "Turbo";
-  }
-
-  const handleSubmitRent = async (e) => {
-    e.preventDefault();
-
-    if (authenticated) {
+    if (firstDay && lastDay) {
       const startDate = new Date(firstDay);
       const endDate = new Date(lastDay);
       const timeDifference = endDate.getTime() - startDate.getTime();
       const Days = Math.ceil(timeDifference / (1000 * 3600 * 24));
-      const Cost = pricePerDay * Days;
+      setTotalCost(car.pricePerDay * Days);
+    } else {
+      setTotalCost(null);
+    }
+  }, [firstDay, lastDay, car]);
+
+  const handleRentSubmit = async (e) => {
+    e.preventDefault();
+
+    if (authenticated) {
       const UserId = user._id;
       const CarId = id;
+      const startDate = new Date(firstDay);
+      const endDate = new Date(lastDay);
+      const timeDifference = endDate.getTime() - startDate.getTime();
+      const Days = Math.ceil(timeDifference / (1000 * 3600 * 24));
+      const Cost = car.pricePerDay * Days;
 
       try {
         const response = await postRental(
@@ -99,6 +79,7 @@ const Car = () => {
         setError("Alugado com sucesso!");
         setFirstDay("");
         setLastDay("");
+        setTotalCost(Cost);
       } catch (error) {
         if (!error?.response) {
           setError("Erro ao acessar o servidor");
@@ -111,27 +92,33 @@ const Car = () => {
     }
   };
 
+  if (!car) {
+    return null;
+  }
+
   return (
     <div className="container center-block">
       <div className="car-container">
         <div className="car-infos-and-img">
           <h2>
-            {carBrand} {carName}
+            {car.carBrand} {car.carName}
           </h2>
           <h3>
-            {formatDisplacement(engineDisplacementInMl)} {engineType} {gear}
+            {formatDisplacement(car.engineDisplacementInMl)}{" "}
+            {car.isTurbo ? "Turbo" : "Aspirado"}{" "}
+            {car.Automatic ? "Câmbio Automático" : "Câmbio Manual"}
           </h3>
-          <img src={ImgLink} alt="Imagem do carro" />
+          <img src={car.ImgLink} alt="Imagem do carro" />
         </div>
         <div className="car-actions-and-dates">
-          <form className="date-form" onSubmit={handleSubmitRent}>
+          <form className="date-form" onSubmit={handleRentSubmit}>
             <label htmlFor="first-day">Data Inicial:</label>
             <input
               type="date"
               name="first-day"
               id="first-day"
               value={firstDay}
-              onChange={(e) => [setFirstDay(e.target.value), setError("")]}
+              onChange={handleDateChange}
             />
             <label htmlFor="last-day">Data Final:</label>
             <input
@@ -139,9 +126,13 @@ const Car = () => {
               id="last-day"
               name="last-day"
               value={lastDay}
-              onChange={(e) => [setLastDay(e.target.value), setError("")]}
+              onChange={handleDateChange}
             />
-            <p>{pricePerDay}</p>
+            <p>
+              {totalCost !== null
+                ? `Preço total: ${totalCost}`
+                : `Preço da diária é de ${car.pricePerDay}`}
+            </p>
             <button type="submit" className="rent-button">
               Alugar
             </button>
