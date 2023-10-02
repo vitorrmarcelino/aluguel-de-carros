@@ -1,12 +1,12 @@
 /* Car.css */
 
 .car-container {
+  margin-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   border-radius: 8px;
-  background-color: #fff; /* Fundo branco */
 }
 
 .car-infos-and-img {
@@ -49,6 +49,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  max-width: 478px;
 }
 
 .car-actions-and-dates p {

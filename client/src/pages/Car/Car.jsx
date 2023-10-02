@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCarById } from "../../api/getCarById";
 import formatDisplacement from "../../utils/formatDisplacement";
+import formatPriceBRL from "../../utils/formatPriceBRL";
 import "./Car.css";
 import { postRental } from "../../api/postRental";
 import { AuthContext } from "../../context/auth";
@@ -130,8 +131,8 @@ const Car = () => {
             />
             <p>
               {totalCost !== null
-                ? `Preço total: ${totalCost}`
-                : `Preço da diária é de ${car.pricePerDay}`}
+                ? `Preço total: ${formatPriceBRL(totalCost)}`
+                : `Preço da diária é de ${formatPriceBRL(car.pricePerDay)}`}
             </p>
             <button type="submit" className="rent-button">
               Alugar
