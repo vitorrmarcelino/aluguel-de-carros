@@ -4,7 +4,7 @@ export const getUserRentals = async (id) => {
     try {
         const response = api.get(`rentals/${id}`)
 
-        return response
+        return response.data
     } catch (error) {
         return
     }

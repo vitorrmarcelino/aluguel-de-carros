@@ -12,14 +12,14 @@ const Rentals = () => {
   useEffect(() => {
     const getRentals = async () => {
       const res = await getUserRentals(user._id);
-      setRentals(res.data);
+      setRentals(res);
     };
     getRentals();
   }, [user._id]);
 
   return (
     <div className="center-flex">
-      <div className="cars container">
+      <div className="container">
         {rentals.map((rental) => (
           <RentalCard key={rental._id} data={rental} />
         ))}

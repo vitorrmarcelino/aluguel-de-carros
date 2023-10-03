@@ -35,7 +35,7 @@ const AppRoutes = () => {
   return (
     <Router>
       <AuthProvider>
-        <Navbar/>
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/alugar" element={<Cars />} />
