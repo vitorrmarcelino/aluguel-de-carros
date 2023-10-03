@@ -8,7 +8,7 @@ import { AuthContext } from "../../context/auth";
 
 import userPicture from "../../assets/cachiorro.webp";
 
-const NavBar = () => {
+const Navbar = () => {
   const { authenticated } = useContext(AuthContext);
   const location = useLocation();
 
@@ -72,7 +72,7 @@ const NavBar = () => {
             <Link to="/alugar" className="header-links">
               Alugue um carro
             </Link>
-            <Link to="/" className="header-links">
+            <Link to="/minhas-reservas" className="header-links">
               Minhas Reservas
             </Link>
 
@@ -102,7 +102,7 @@ const NavBar = () => {
         <Link to="/alugar" className="header-links">
           <li>Alugue um carro</li>
         </Link>
-        <Link to="/" className="header-links">
+        <Link to="/minhas-reservas" className="header-links">
           <li>Minhas Reservas</li>
         </Link>
 
@@ -127,4 +127,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

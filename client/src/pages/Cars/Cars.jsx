@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Cars.css";
-import EachCar from "../../components/eachcar/EachCar";
+import EachCar from "../../components/EachCar/EachCar";
 import api from "../../api/Api";
 
 const Cars = () => {

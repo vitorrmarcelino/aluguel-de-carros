@@ -12,9 +12,10 @@ import Cars from "./pages/Cars/Cars";
 import Car from "./pages/Car/Car";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import NavBar from "./components/navbar/Navbar";
 import Account from "./pages/Account/Account";
 import NotFound from "./pages/Error/NotFound";
+import Rentals from "./pages/Rentals/Rentals";
+import Navbar from "./components/Navbar/Navbar";
 
 const AppRoutes = () => {
   const Private = ({ children }) => {
@@ -34,13 +35,22 @@ const AppRoutes = () => {
   return (
     <Router>
       <AuthProvider>
-        <NavBar />
+        <Navbar/>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/alugar" element={<Cars />} />
           <Route exact path="/alugar/:id" element={<Car />} />
           <Route exact path="/cadastro" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
+          <Route
+            exact
+            path="/minhas-reservas"
+            element={
+              <Private>
+                <Rentals />
+              </Private>
+            }
+          />
           <Route
             exact
             path="/conta"

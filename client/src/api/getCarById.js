@@ -1,8 +1,8 @@
 import api from "./Api"
 
-export const getCarById = async (url) => {
+export const getCarById = async (id) => {
     try {
-        const response = api.get(url)
+        const response = api.get(`carros/${id}`)
 
         return response
     } catch (error) {

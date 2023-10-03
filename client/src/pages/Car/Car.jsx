@@ -20,7 +20,7 @@ const Car = () => {
   useEffect(() => {
     const getCar = async () => {
       try {
-        const response = await getCarById(`carros/${id}`);
+        const response = await getCarById(id);
         const data = response.data;
         setCar(data);
       } catch (error) {
