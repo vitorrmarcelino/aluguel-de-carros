@@ -9,6 +9,7 @@ const Cars = () => {
   useEffect(() => {
     api.get("carros").then((res) => {
       setCars(res.data);
+      console.log(res)
     });
   }, []);
 

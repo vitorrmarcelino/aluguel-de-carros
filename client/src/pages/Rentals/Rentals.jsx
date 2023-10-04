@@ -12,7 +12,7 @@ const Rentals = () => {
   useEffect(() => {
     const getRentals = async () => {
       const res = await getUserRentals(user._id);
-      setRentals(res);
+      setRentals(res.data);
     };
     getRentals();
   }, [user._id]);

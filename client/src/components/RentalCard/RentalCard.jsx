@@ -12,6 +12,7 @@ const RentalCard = ({ data }) => {
       <p>{Cost}</p>
       <p>{UserId}</p>
       <p>{CarId}</p>
+      <br />
     </div>
   );
 };
