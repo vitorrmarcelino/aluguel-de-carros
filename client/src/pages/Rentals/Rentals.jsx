@@ -20,9 +20,17 @@ const Rentals = () => {
   return (
     <div className="center-flex">
       <div className="container">
-        {rentals.map((rental) => (
-          <RentalCard key={rental._id} data={rental} />
-        ))}
+        {rentals.length > 0 ? (
+          <>
+            {rentals.map((rental) => (
+              <RentalCard key={rental._id} data={rental} />
+            ))}
+          </>
+        ) : (
+          <>
+            <p>Você não fez nenhuma reserva</p>
+          </>
+        )}
       </div>
     </div>
   );
