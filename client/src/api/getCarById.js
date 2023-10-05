@@ -1,11 +1,11 @@
-import api from "./Api"
+import api from "./Api";
 
 export const getCarById = async (id) => {
-    try {
-        const response = api.get(`carros/${id}`)
+  try {
+    const response = api.get(`carros/${id}`);
 
-        return response
-    } catch (error) {
-        return
-    }
-}
+    return response;
+  } catch (error) {
+    return;
+  }
+};
