@@ -4,6 +4,7 @@ import { getCarById } from "../../api/getCarById";
 import formatDisplacement from "../../utils/formatDisplacement";
 import formatPriceBRL from "../../utils/formatPriceBRL";
 import "./Car.css";
+import "./CarMobile.css";
 import { postRental } from "../../api/postRental";
 import { AuthContext } from "../../context/auth";
 

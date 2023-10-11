@@ -22,9 +22,12 @@ const Rentals = () => {
       <div className="container">
         {rentals.length > 0 ? (
           <>
-            {rentals.map((rental) => (
-              <RentalCard key={rental._id} data={rental} />
-            ))}
+            {rentals
+              .slice()
+              .reverse()
+              .map((rental) => (
+                <RentalCard key={rental._id} data={rental} />
+              ))}
           </>
         ) : (
           <>
