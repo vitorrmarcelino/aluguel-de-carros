@@ -12,13 +12,13 @@ exports.get = async (req, res) => {
 exports.post = async (req, res) => {
   const { firstDay, lastDay, Days, Cost, UserId, CarId } = req.body;
 
-  const currentDate = new Date
-  const inputDate = new Date(firstDay)
+  const currentDate = new Date();
+  const inputDate = new Date(firstDay);
 
   if (!firstDay || !lastDay) {
     return res.status(422).json({ msg: "Preencha as datas!" });
   }
-  if (inputDate < currentDate || Days<=0){
+  if (inputDate < currentDate || Days <= 0) {
     return res.status(422).json({ msg: "Escolha uma data válida!" });
   }
 
@@ -34,10 +34,9 @@ exports.post = async (req, res) => {
   try {
     await rental.save();
 
-    res.status(201).json({msg: "Carro alugado com sucesso!"})
+    res.status(201).json({ msg: "Carro alugado com sucesso!" });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json({ msg: "Aconteceu um erro!" });
   }
 };
-
