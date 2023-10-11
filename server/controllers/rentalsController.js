@@ -18,10 +18,7 @@ exports.post = async (req, res) => {
   if (!firstDay || !lastDay) {
     return res.status(422).json({ msg: "Preencha as datas!" });
   }
-  if (Days===0) {
-    return res.status(422).json({ msg: "Você deve ficar no mínimo um dia com o carro!" });
-  }
-  if (inputDate < currentDate){
+  if (inputDate < currentDate || Days<=0){
     return res.status(422).json({ msg: "Escolha uma data válida!" });
   }
 
