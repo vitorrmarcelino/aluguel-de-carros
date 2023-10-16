@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.container-rent {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+.rent-infos {
+  margin-top: 20px;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: rgb(78, 78, 78);
+}
+
+@media (max-width: 768px) {
+    .container-rent {
+        max-width: 60%;
+      flex-direction: column;
+      margin: 10px auto;
+    }
+  
+    .date {
+      font-size: 14px;
+    }
+  
+    .cost {
+      font-size: 16px;
+    }
+  
+    .days {
+      font-size: 16px;
+    }
+  
+    .rent-infos {
+      margin-top: 10px;
+      font-size: 14px;
+      line-height: 1.3rem;
+    }
+  }
+

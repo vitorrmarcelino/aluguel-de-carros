@@ -1,24 +1,32 @@
 import React from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import "./RentalCard.css";
+import CarImg from "./CarImg/CarImg";
+import formatPriceBRL from "../../utils/formatPriceBRL";
 
 const RentalCard = ({ data }) => {
-  const { firstDay, lastDay, Days, Cost, UserId, CarId } = data;
+  const { firstDay, lastDay, Days, Cost, CarId } = data;
+  const formattedFirstDay = firstDay.slice(0, 10);
+  const formattedLastDay = lastDay.slice(0, 10);
+
   return (
-    <div>
-      <p>{firstDay}</p>
-      <p>{lastDay}</p>
-      <p>{Days}</p>
-      <p>{Cost}</p>
-      <p>{UserId}</p>
-      <p>{CarId}</p>
+    <div className="center-block">
+      <div className="container-rent">
+        <CarImg id={CarId} />
+        <div className="rental-texts">
+          <p className="date rent-infos">Primeiro dia: {formattedFirstDay}</p>
+          <p className="date rent-infos">Último dia: {formattedLastDay}</p>
+          <p className="days rent-infos">{Days} dias no total</p>
+          <p className="cost rent-infos">{formatPriceBRL(Cost)} </p>
+        </div>
+      </div>
       <br />
     </div>
   );
 };
 
-export default RentalCard;
-
 RentalCard.propTypes = {
-  data: propTypes.shape({}),
-}.isRequired;
+  data: PropTypes.shape({}),
+};
+
+export default RentalCard;
