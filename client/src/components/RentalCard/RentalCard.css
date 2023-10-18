@@ -19,6 +19,11 @@
   color: rgb(78, 78, 78);
 }
 
+.car-name-info{
+  font-size: 1.05em;
+  color: rgb(59, 59, 59);
+}
+
 @media (max-width: 768px) {
     .container-rent {
         max-width: 60%;

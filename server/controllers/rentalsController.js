@@ -13,7 +13,10 @@ exports.post = async (req, res) => {
   const { firstDay, lastDay, Days, Cost, UserId, CarId } = req.body;
 
   const currentDate = new Date();
+  currentDate.setHours(-3, 0, 0,0);
   const inputDate = new Date(firstDay);
+  console.log(inputDate);
+  console.log(currentDate);
 
   if (!firstDay || !lastDay) {
     return res.status(422).json({ msg: "Preencha as datas!" });
