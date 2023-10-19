@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth";
+import { uploadImage } from "../../api/uploadImage";
 
 const Account = () => {
-  const { logout, user } = useContext(AuthContext);
+  const { logout, user, updateImageUrl } = useContext(AuthContext);
+  const [message, setMessage] = useState("");
   // const [loading, setLoading] = useState(true);
 
   const handleLogout = () => {
@@ -11,9 +13,21 @@ const Account = () => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    
-    console.log("manaus")
-  }
+    try {
+      const data = new FormData();
+      data.append("file", e.target.querySelector("input[type=file]").files[0]);
+      const response = await uploadImage(user._id, data);
+      updateImageUrl(response.data.file.path);
+      setMessage("Imagem atualizada com sucesso!")
+      console.log(user)
+    } catch (error) {
+      if (!error?.response) {
+        setMessage("Erro ao acessar o servidor");
+      } else if (error.response.status === 400) {
+        setMessage(error.response.data.msg);
+      }
+    }
+  };
 
   // if (loading) {
   //   return <div className="loading">Loading...</div>;
@@ -28,9 +42,10 @@ const Account = () => {
       <p>Email: {email}</p>
       <button onClick={handleLogout}>Sair</button>
       <form onSubmit={handleUpload}>
-      <input type="file"/>
-      <button type="submit">Enviar</button>
+        <input type="file" name="file"/>
+        <button type="submit">Enviar</button>
       </form>
+      <p>{message}</p>
     </div>
   );
 };

@@ -70,11 +70,17 @@ export const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  const updateImageUrl = (imagePath) => {
+    const updatedUser = {...user, imageUrl: imagePath};
+    setUser(updatedUser);
+  }
+
   return (
     <AuthContext.Provider
       value={{
         authenticated: !!user && !!token,
         user,
+        updateImageUrl,
         token,
         loading,
         login,
