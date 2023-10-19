@@ -23,7 +23,8 @@ exports.put = async (req, res) => {
     );
 
     res.json({
-      msg: "Imagem de perfil do usuário atualizada com sucesso", file
+      msg: "Imagem de perfil do usuário atualizada com sucesso",
+      file,
     });
   } catch (error) {
     res.status(500).json({ msg: "Erro ao salvar a imagem." });

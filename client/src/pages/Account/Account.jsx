@@ -18,8 +18,8 @@ const Account = () => {
       data.append("file", e.target.querySelector("input[type=file]").files[0]);
       const response = await uploadImage(user._id, data);
       updateImageUrl(response.data.file.path);
-      setMessage("Imagem atualizada com sucesso!")
-      console.log(user)
+      setMessage("Imagem atualizada com sucesso!");
+      console.log(user);
     } catch (error) {
       if (!error?.response) {
         setMessage("Erro ao acessar o servidor");
@@ -42,7 +42,7 @@ const Account = () => {
       <p>Email: {email}</p>
       <button onClick={handleLogout}>Sair</button>
       <form onSubmit={handleUpload}>
-        <input type="file" name="file"/>
+        <input type="file" name="file" />
         <button type="submit">Enviar</button>
       </form>
       <p>{message}</p>

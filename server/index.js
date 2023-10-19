@@ -8,7 +8,7 @@ connectToDataBase();
 
 app.use(cors());
 app.use(express.json());
-app.use('/uploads',express.static('uploads'));
+app.use("/uploads", express.static("uploads"));
 
 //Importando as rotas do router.js
 app.use("/", require("./routes/router"));

@@ -71,9 +71,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateImageUrl = (imagePath) => {
-    const updatedUser = {...user, imageUrl: imagePath};
+    const updatedUser = { ...user, imageUrl: imagePath };
     setUser(updatedUser);
-  }
+  };
 
   return (
     <AuthContext.Provider
