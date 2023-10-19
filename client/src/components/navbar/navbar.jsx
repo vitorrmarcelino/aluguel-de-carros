@@ -11,7 +11,7 @@ import userPictureDefault from "../../assets/cachiorro.webp";
 const Navbar = () => {
   const { authenticated, user } = useContext(AuthContext);
   const location = useLocation();
-  const userPicture = user ? user.imagePath : null;
+  const userPictureUrl = user ? user.imageUrl : null;
 
   useEffect(() => {
     const MenuIcon = document.querySelector("#menu-icon");
@@ -89,10 +89,10 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                {userPicture ? (
+                {userPictureUrl ? (
                   <Link to="/conta" className="user-actions header-links">
                     <img
-                      src={userPicture}
+                      src={userPictureUrl}
                       alt="User"
                       className="user-picture"
                     />

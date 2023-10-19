@@ -12,7 +12,9 @@ const getUserByIdController = require("../controllers/getUserByIdController");
 const rentalsController = require("../controllers/rentalsController");
 const getRentalByUserIdController = require("../controllers/getRentalByUserIdController");
 const checkTokenController = require("../controllers/checkTokenController");
-
+const uploadController = require("../controllers/uploadController")
+//multer config
+const upload = require("../config/multer")
 //Rota Padrão
 route.get("/", (req, res) => {
   res.status(200).send("Bem vindo a nossa API!");
@@ -24,6 +26,7 @@ route.post("/carros", carController.post);
 //Usuarios
 route.post("/auth/register", userPostController.post); //Registrar Usuario
 route.post("/auth/login", loginController.post); //Login
+route.post("/upload/:id", upload.single("file"), uploadController.post); //Imagem de perfil
 //Transações
 route.post("/rentals", rentalsController.post);
 route.get("/rentals", rentalsController.get);
