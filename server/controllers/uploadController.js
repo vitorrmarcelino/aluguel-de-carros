@@ -2,6 +2,13 @@ const UserModel = require("../models/user.model");
 
 exports.put = async (req, res) => {
   try {
+    const userExists = await UserModel.findById(req.params.id);
+    if (!userExists) {
+      return res
+        .status(404)
+        .json({ msg: `Usuário com ID ${req.params.id} não encontrado.` });
+    }
+
     const file = req.file;
     if (!file) {
       return res
