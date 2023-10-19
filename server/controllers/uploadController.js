@@ -1,20 +1,20 @@
-const ImageUrlModel = require("../models/img.url.model");
+const UserModel = require("../models/user.model");
 
-exports.post = async (req, res) => {
+exports.put = async (req, res) => {
   try {
     const file = req.file;
-    const id = req.params.id;
     if (!file) {
       return res
         .status(400)
         .json({ msg: "Nenhum arquivo de imagem foi enviado." });
     }
-    const imageUrl = new ImageUrlModel({
-      imageUrl: file.path,
-      userId: id,
-    });
 
-    await imageUrl.save();
+    await UserModel.findByIdAndUpdate(
+      req.params.id,
+      { imageUrl: file.path },
+      { new: true }
+    );
+
     res.json({
       msg: "Imagem de perfil do usuário atualizada com sucesso",
     });
