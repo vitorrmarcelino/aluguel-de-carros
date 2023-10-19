@@ -9,6 +9,12 @@ const Account = () => {
     logout();
   };
 
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    
+    console.log("manaus")
+  }
+
   // if (loading) {
   //   return <div className="loading">Loading...</div>;
   // }
@@ -21,6 +27,10 @@ const Account = () => {
       <p>Nome de usuário: {name}</p>
       <p>Email: {email}</p>
       <button onClick={handleLogout}>Sair</button>
+      <form onSubmit={handleUpload}>
+      <input type="file"/>
+      <button type="submit">Enviar</button>
+      </form>
     </div>
   );
 };

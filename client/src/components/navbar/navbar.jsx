@@ -6,11 +6,12 @@ import { Menu } from "lucide-react";
 import { X } from "lucide-react";
 import { AuthContext } from "../../context/auth";
 
-import userPicture from "../../assets/cachiorro.webp";
+import userPictureDefault from "../../assets/cachiorro.webp";
 
 const Navbar = () => {
-  const { authenticated } = useContext(AuthContext);
+  const { authenticated, user } = useContext(AuthContext);
   const location = useLocation();
+  const userPicture = user ? user.imagePath : null;
 
   useEffect(() => {
     const MenuIcon = document.querySelector("#menu-icon");
@@ -88,9 +89,23 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/conta" className="user-actions header-links">
-                  <img src={userPicture} alt="User" className="user-picture" />
-                </Link>
+                {userPicture ? (
+                  <Link to="/conta" className="user-actions header-links">
+                    <img
+                      src={userPicture}
+                      alt="User"
+                      className="user-picture"
+                    />
+                  </Link>
+                ) : (
+                  <Link to="/conta" className="user-actions header-links">
+                    <img
+                      src={userPictureDefault}
+                      alt="User"
+                      className="user-picture"
+                    />
+                  </Link>
+                )}
               </>
             )}
           </nav>

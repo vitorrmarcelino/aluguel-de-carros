@@ -13,6 +13,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imagePath: {
+    type: String
+  }
 });
 
 const UserModel = mongoose.model("User", userSchema);
