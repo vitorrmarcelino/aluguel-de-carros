@@ -12,12 +12,12 @@ const Navbar = () => {
   const { authenticated, user } = useContext(AuthContext);
   const location = useLocation();
   const imagePath = user ? user.imageUrl : null;
-
+  
   useEffect(() => {
     const MenuIcon = document.querySelector("#menu-icon");
     const XIcon = document.querySelector("#x-icon");
     const MenuDisplay = document.querySelector("#active-menu");
-
+    
     if (window.innerWidth >= 768) {
       MenuDisplay.style.display = "none";
       MenuIcon.style.display = "none";

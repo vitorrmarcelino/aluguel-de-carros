@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     checkTokenValidity();
-  }, []);
+  });
 
   const login = async (email, password) => {
     try {
@@ -61,6 +61,12 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updateImageUrl = (imagePath) => {
+    const updatedUser = { ...user, imageUrl: imagePath };
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
@@ -68,11 +74,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setToken(null);
     navigate("/");
-  };
-
-  const updateImageUrl = (imagePath) => {
-    const updatedUser = { ...user, imageUrl: imagePath };
-    setUser(updatedUser);
   };
 
   return (
