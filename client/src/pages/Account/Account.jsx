@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/auth";
-import { uploadImage } from "../../api/uploadImage";
+import { uploadImage, removeImage } from "../../api/uploadImage";
 import userPictureDefault from "../../assets/cachiorro.webp";
 
 const Account = () => {
@@ -42,18 +42,18 @@ const Account = () => {
       <h1>Rota Privada</h1>
       {imagePath ? (
 
-                    <img
-                      src={`http://localhost:5000/${imagePath}`}
-                      alt="User"
-                      className="user-picture"
-                    />
-                ) : (               
-                    <img
-                      src={userPictureDefault}
-                      alt="User"
-                      className="user-picture"
-                    />                
-                )}
+        <img
+          src={`http://localhost:5000/${imagePath}`}
+          alt="User"
+          className="user-picture"
+        />
+      ) : (
+        <img
+          src={userPictureDefault}
+          alt="User"
+          className="user-picture"
+        />
+      )}
       <p>Nome de usuário: {name}</p>
       <p>Email: {email}</p>
       <button onClick={handleLogout}>Sair</button>

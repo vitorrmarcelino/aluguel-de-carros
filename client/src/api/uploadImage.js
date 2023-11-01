@@ -9,3 +9,13 @@ export const uploadImage = async (id, file) => {
     throw error;
   }
 };
+
+export const removeImage = async (id) => {
+  try {
+    const response = await api.put(`/upload/delete/${id}`);
+
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};

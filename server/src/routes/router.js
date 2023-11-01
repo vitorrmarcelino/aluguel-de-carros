@@ -26,7 +26,8 @@ route.post("/carros", carController.post);
 //Usuarios
 route.post("/auth/register", userPostController.post); //Registrar Usuario
 route.post("/auth/login", loginController.post); //Login
-route.put("/upload/:id", upload.single("file"), uploadController.put); //Imagem de perfil
+route.put("/upload/:id", upload.single("file"), uploadController.update); //Imagem de perfil
+route.put("/upload/delete/:id", uploadController.delete); // Remover imagem de perfil
 //Transações
 route.post("/rentals", rentalsController.post);
 route.get("/rentals", rentalsController.get);

@@ -1,6 +1,6 @@
 const UserModel = require("../models/user.model");
 
-exports.put = async (req, res) => {
+exports.update = async (req, res) => {
   try {
     const userExists = await UserModel.findById(req.params.id);
     if (!userExists) {
@@ -30,3 +30,26 @@ exports.put = async (req, res) => {
     res.status(500).json({ msg: "Erro ao salvar a imagem." });
   }
 };
+
+exports.delete = async (req, res) => {
+  try {
+    const userExists = await UserModel.findById(req.params.id);
+    if (!userExists) {
+      return res
+        .status(404)
+        .json({ msg: `Usuário com ID ${req.params.id} não encontrado.` });
+    }
+
+    await UserModel.findByIdAndUpdate(
+      req.params.id,
+      { imageUrl: "" },
+      { new: true }
+    );
+
+    res.json({
+      msg: "Imagem de perfil do usuário removida com sucesso"
+    });
+  } catch (error) {
+    res.status(500).json({ msg: "Erro ao salvar a imagem." });
+  }
+}
